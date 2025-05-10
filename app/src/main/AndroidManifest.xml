@@ -15,18 +15,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CHATBOTAPPLICATION"
         tools:targetApi="31">
+
         <activity
             android:name=".InfoActivity"
             android:exported="false" />
+
+        <!-- ✅ MainActivity normal activity olarak kalıyor -->
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+
+        <!-- ✅ Launcher olarak ChatListActivity ayarlandı -->
+        <activity
+            android:name=".ChatListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

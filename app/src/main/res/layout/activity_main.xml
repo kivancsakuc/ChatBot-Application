@@ -12,22 +12,36 @@
         android:theme="?attr/actionBarTheme"
         android:title="ChatBot" />
 
-    <ImageView
-        android:id="@+id/chatIcon"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/chat_icon"
-        android:contentDescription="chat icon" />
-
-    <Button
-        android:id="@+id/infoBtn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Info Screen"
-        android:layout_gravity="center"
-        android:layout_margin="8dp" />
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnChatList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chats"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white" />
+
+        <ImageView
+            android:id="@+id/chatIcon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/chat_logo_transparent"
+            android:contentDescription="chat icon"
+            android:layout_marginEnd="16dp" />
+
+        <Button
+            android:id="@+id/infoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Credit"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
