@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_date"
-        android:title="Tarih Seç" />
+        android:id="@+id/menu_dark"
+        android:title="Koyu Tema" />
     <item
-        android:id="@+id/menu_time"
-        android:title="Saat Seç" />
+        android:id="@+id/menu_light"
+        android:title="Açık Tema" />
 </menu>

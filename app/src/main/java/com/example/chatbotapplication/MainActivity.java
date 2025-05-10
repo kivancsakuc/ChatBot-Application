@@ -1,6 +1,7 @@
 package com.example.chatbotapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.app.TimePickerDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loadTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.main_toolbar);
@@ -80,28 +83,20 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_date) {
-            showDatePicker();
-            return true;
-        } else if (item.getItemId() == R.id.menu_time) {
-            showTimePicker();
-            return true;
+        int id = item.getItemId();
+         if (id == R.id.menu_dark) {
+             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+             saveTheme("dark");
+             recreate();
+             return true;
+         }
+         else if(id == R.id.menu_light){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                saveTheme("light");
+                recreate();
+                return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-    private void showDatePicker() {
-        DatePickerDialog datePicker = new DatePickerDialog(this,
-                (view, year, month, dayOfMonth) -> {
-                    Toast.makeText(this, "Seçilen Tarih: " + dayOfMonth + "/" + (month + 1) + "/" + year, Toast.LENGTH_SHORT).show();
-                }, 2024, 4, 20); // Başlangıç tarihi
-        datePicker.show();
-    }
-    private void showTimePicker() {
-        TimePickerDialog timePicker = new TimePickerDialog(this,
-                (view, hourOfDay, minute) -> {
-                    Toast.makeText(this, "Seçilen Saat: " + hourOfDay + ":" + minute, Toast.LENGTH_SHORT).show();
-                }, 12, 0, true);
-        timePicker.show();
     }
 
     private void sendMessageToGemini(String message) {
@@ -187,5 +182,22 @@ public class MainActivity extends AppCompatActivity {
 
     class PartResponse {
         String text;
+    }
+    private void saveTheme(String mode) {
+        getSharedPreferences("settings", MODE_PRIVATE)
+                .edit()
+                .putString("theme", mode)
+                .apply();
+    }
+
+    private void loadTheme() {
+        String theme = getSharedPreferences("settings", MODE_PRIVATE)
+                .getString("theme", "light");
+
+        if (theme.equals("dark")) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
     }
 }
