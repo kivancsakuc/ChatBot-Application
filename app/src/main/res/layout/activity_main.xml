@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -6,10 +7,11 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/main_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="108dp"
         android:background="?attr/colorPrimary"
         android:theme="?attr/actionBarTheme"
         android:title="ChatBot" />
+
     <ImageView
         android:id="@+id/chatIcon"
         android:layout_width="100dp"
@@ -19,22 +21,19 @@
         android:src="@drawable/chat_icon"
         android:contentDescription="chat icon" />
 
-
     <Button
         android:id="@+id/infoBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Info Screen"
         android:layout_gravity="center"
-        android:layout_margin="8dp"/>
-
+        android:layout_margin="8dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
-
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -42,17 +41,24 @@
         android:padding="8dp"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/inputText"
-            android:layout_weight="1"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:hint="Ask something..."/>
+            android:layout_weight="1"
+            android:hint="Ask something..."
+            style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense">
 
-        <Button
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/sendBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Send"/>
+            android:text="Send"
+            style="@style/Widget.MaterialComponents.Button" />
     </LinearLayout>
 </LinearLayout>
