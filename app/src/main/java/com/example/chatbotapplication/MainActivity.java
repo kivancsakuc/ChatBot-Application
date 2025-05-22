@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     interface GeminiService {
         @Headers({
                 "Content-Type: application/json",
-                "X-Goog-Api-Key: AIzaSyAs0xyxFBIfGXxuQybH-F_28UuqyV0ZGxo"
+                "X-Goog-Api-Key: API KEY"
         })
         @POST("v1beta/models/gemini-2.0-flash:generateContent")
         Call<GeminiResponse> sendMessage(@Body GeminiRequest request);
